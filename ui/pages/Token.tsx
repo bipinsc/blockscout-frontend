@@ -23,6 +23,7 @@ import * as addressStubs from 'stubs/address';
 import * as tokenStubs from 'stubs/token';
 import { generateListStub } from 'stubs/utils';
 import AddressContract from 'ui/address/AddressContract';
+import TextAd from 'ui/shared/ad/TextAd';
 import * as TokenEntity from 'ui/shared/entities/token/TokenEntity';
 import EntityTags from 'ui/shared/EntityTags';
 import NetworkExplorers from 'ui/shared/NetworkExplorers';
@@ -156,8 +157,7 @@ const TokenPageContent = () => {
     scrollRef,
     options: {
       enabled: Boolean(hashString && tab === 'holders' && hasData),
-      placeholderData: generateListStub<'token_holders'>(
-        tokenQuery.data?.type === 'ERC-1155' ? tokenStubs.TOKEN_HOLDER_ERC_1155 : tokenStubs.TOKEN_HOLDER_ERC_20, 50, { next_page_params: null }),
+      placeholderData: generateListStub<'token_holders'>(tokenStubs.TOKEN_HOLDER, 50, { next_page_params: null }),
     },
   });
 
@@ -195,8 +195,7 @@ const TokenPageContent = () => {
 
   let pagination: PaginationParams | undefined;
 
-  // default tab for erc-20 is token transfers
-  if ((tokenQuery.data?.type === 'ERC-20' && !tab) || tab === 'token_transfers') {
+  if (!tab || tab === 'token_transfers') {
     pagination = transfersQuery.pagination;
   }
 
@@ -204,8 +203,7 @@ const TokenPageContent = () => {
     pagination = holdersQuery.pagination;
   }
 
-  // default tab for nfts is token inventory
-  if (((tokenQuery.data?.type === 'ERC-1155' || tokenQuery.data?.type === 'ERC-721') && !tab) || tab === 'inventory') {
+  if (tab === 'inventory') {
     pagination = inventoryQuery.pagination;
   }
 
@@ -267,6 +265,7 @@ const TokenPageContent = () => {
 
   return (
     <>
+      <TextAd mb={ 6 }/>
       <PageTitle
         title={ `${ tokenQuery.data?.name || 'Unnamed token' }${ tokenSymbolText }` }
         isLoading={ tokenQuery.isPlaceholderData }

@@ -85,7 +85,7 @@ const Transactions = () => {
 
   return (
     <>
-      <PageTitle title="Transactions"/>
+      <PageTitle title="Transactions" withTextAd/>
       <RoutedTabs
         tabs={ tabs }
         tabListProps={ isMobile ? undefined : TAB_LIST_PROPS }

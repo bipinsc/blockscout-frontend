@@ -46,7 +46,7 @@ test('contract +@mobile', async({ mount, page }) => {
   );
 
   await expect(component).toHaveScreenshot({
-    mask: [ ],
+    mask: [ page.locator(configs.adsBannerSelector) ],
     maskColor: configs.maskColor,
   });
 });
@@ -75,7 +75,7 @@ test('token', async({ mount, page }) => {
 
   await page.evaluate(() => {
     window.ethereum = {
-      providers: [ { isMetaMask: true, _events: {} } ],
+      providers: [ { isMetaMask: true } ],
     }as WindowProvider;
   });
 
@@ -89,7 +89,7 @@ test('token', async({ mount, page }) => {
   );
 
   await expect(component).toHaveScreenshot({
-    mask: [ ],
+    mask: [ page.locator(configs.adsBannerSelector) ],
     maskColor: configs.maskColor,
   });
 });
@@ -112,7 +112,7 @@ test('validator +@mobile', async({ mount, page }) => {
   );
 
   await expect(component).toHaveScreenshot({
-    mask: [ ],
+    mask: [ page.locator(configs.adsBannerSelector) ],
     maskColor: configs.maskColor,
   });
 });

@@ -68,7 +68,7 @@ const Accounts = () => {
 
   return (
     <>
-      <PageTitle title="Top accounts"/>
+      <PageTitle title="Top accounts" withTextAd/>
       <DataListDisplay
         isError={ isError }
         items={ data?.items }

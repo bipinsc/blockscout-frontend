@@ -32,6 +32,7 @@ import CopyToClipboard from 'ui/shared/CopyToClipboard';
 import CurrencyValue from 'ui/shared/CurrencyValue';
 import DataFetchAlert from 'ui/shared/DataFetchAlert';
 import DetailsInfoItem from 'ui/shared/DetailsInfoItem';
+import DetailsSponsoredItem from 'ui/shared/DetailsSponsoredItem';
 import AddressEntity from 'ui/shared/entities/address/AddressEntity';
 import BlockEntity from 'ui/shared/entities/block/BlockEntity';
 import HashStringShortenDynamic from 'ui/shared/HashStringShortenDynamic';
@@ -186,7 +187,7 @@ const TxDetails = () => {
             isLoading={ isPlaceholderData }
           >
             <Icon as={ clockIcon } boxSize={ 5 } color="gray.500" isLoading={ isPlaceholderData }/>
-            <Skeleton isLoaded={ !isPlaceholderData } ml={ 2 }>{ dayjs(data.timestamp).fromNow() }</Skeleton>
+            <Skeleton isLoaded={ !isPlaceholderData } ml={ 1 }>{ dayjs(data.timestamp).fromNow() }</Skeleton>
             <TextSeparator/>
             <Skeleton isLoaded={ !isPlaceholderData } whiteSpace="normal">{ dayjs(data.timestamp).format('llll') }</Skeleton>
             <TextSeparator color="gray.500"/>
@@ -195,6 +196,7 @@ const TxDetails = () => {
             </Skeleton>
           </DetailsInfoItem>
         ) }
+        <DetailsSponsoredItem isLoading={ isPlaceholderData }/>
 
         { divider }
 
@@ -320,8 +322,8 @@ const TxDetails = () => {
             title="Gas fees (Gwei)"
             // eslint-disable-next-line max-len
             hint={ `
-              Base Fee refers to the network Base Fee at the time of the block,
-              while Max Fee & Max Priority Fee refer to the max amount a user is willing to pay
+              Base Fee refers to the network Base Fee at the time of the block, 
+              while Max Fee & Max Priority Fee refer to the max amount a user is willing to pay 
               for their tx & to give to the ${ getNetworkValidatorTitle() } respectively
             ` }
             isLoading={ isPlaceholderData }
@@ -359,7 +361,7 @@ const TxDetails = () => {
               currency={ config.chain.currency.symbol }
               exchangeRate={ data.exchange_rate }
               flexWrap="wrap"
-              ml={ 2 }
+              ml={ 1 }
             />
           </DetailsInfoItem>
         ) }

@@ -15,17 +15,16 @@ import type { ResourceError } from 'lib/api/resources';
 import useApiQuery from 'lib/api/useApiQuery';
 import useFetch from 'lib/hooks/useFetch';
 import useIssueUrl from 'lib/hooks/useIssueUrl';
+import IndexingAlertIntTxs from 'ui/home/IndexingAlertIntTxs';
 import NetworkAddToWallet from 'ui/shared/NetworkAddToWallet';
 
 import ColorModeToggler from '../header/ColorModeToggler';
 import FooterLinkItem from './FooterLinkItem';
-import IntTxsIndexingStatus from './IntTxsIndexingStatus';
 import getApiVersionUrl from './utils/getApiVersionUrl';
 
 const MAX_LINKS_COLUMNS = 3;
 
 const FRONT_VERSION_URL = `https://github.com/blockscout/frontend/tree/${ config.UI.footer.frontendVersion }`;
-const FRONT_COMMIT_URL = `https://github.com/blockscout/frontend/commit/${ config.UI.footer.frontendCommit }`;
 
 const Footer = () => {
 
@@ -75,23 +74,11 @@ const Footer = () => {
     },
   ];
 
-  const frontendLink = (() => {
-    if (config.UI.footer.frontendVersion) {
-      return <Link href={ FRONT_VERSION_URL } target="_blank">{ config.UI.footer.frontendVersion }</Link>;
-    }
-
-    if (config.UI.footer.frontendCommit) {
-      return <Link href={ FRONT_COMMIT_URL } target="_blank">{ config.UI.footer.frontendCommit }</Link>;
-    }
-
-    return null;
-  })();
-
   const fetch = useFetch();
 
   const { isLoading, data: linksData } = useQuery<unknown, ResourceError<unknown>, Array<CustomLinksGroup>>(
     [ 'footer-links' ],
-    async() => fetch(config.UI.footer.links || '', undefined, { resource: 'footer-links' }),
+    async() => fetch(config.UI.footer.links || ''),
     {
       enabled: Boolean(config.UI.footer.links),
       staleTime: Infinity,
@@ -109,7 +96,7 @@ const Footer = () => {
       <Box flexGrow="1" mb={{ base: 8, lg: 0 }}>
         <Flex flexWrap="wrap" columnGap={ 8 } rowGap={ 6 }>
           <ColorModeToggler/>
-          { !config.UI.indexingAlert.isHidden && <IntTxsIndexingStatus/> }
+          { !config.UI.indexingAlert.isHidden && <IndexingAlertIntTxs/> }
           <NetworkAddToWallet/>
         </Flex>
         <Box mt={{ base: 5, lg: '44px' }}>
@@ -124,9 +111,9 @@ const Footer = () => {
                 Backend: <Link href={ apiVersionUrl } target="_blank">{ backendVersionData?.backend_version }</Link>
             </Text>
           ) }
-          { frontendLink && (
+          { (config.UI.footer.frontendVersion || config.UI.footer.frontendCommit) && (
             <Text fontSize="xs">
-              Frontend: { frontendLink }
+              Frontend: <Link href={ FRONT_VERSION_URL } target="_blank">{ config.UI.footer.frontendVersion }</Link>
             </Text>
           ) }
         </VStack>

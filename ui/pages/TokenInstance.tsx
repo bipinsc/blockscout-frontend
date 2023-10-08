@@ -14,6 +14,7 @@ import * as regexp from 'lib/regexp';
 import { TOKEN_INSTANCE } from 'stubs/token';
 import * as tokenStubs from 'stubs/token';
 import { generateListStub } from 'stubs/utils';
+import TextAd from 'ui/shared/ad/TextAd';
 import AddressHeadingInfo from 'ui/shared/AddressHeadingInfo';
 import Tag from 'ui/shared/chakra/Tag';
 import LinkExternal from 'ui/shared/LinkExternal';
@@ -70,8 +71,7 @@ const TokenInstanceContent = () => {
     scrollRef,
     options: {
       enabled: Boolean(hash && tab === 'holders' && shouldFetchHolders),
-      placeholderData: generateListStub<'token_instance_holders'>(
-        tokenInstanceQuery.data?.token.type === 'ERC-1155' ? tokenStubs.TOKEN_HOLDER_ERC_1155 : tokenStubs.TOKEN_HOLDER_ERC_20, 10, { next_page_params: null }),
+      placeholderData: generateListStub<'token_instance_holders'>(tokenStubs.TOKEN_HOLDER, 10, { next_page_params: null }),
     },
   });
 
@@ -168,6 +168,7 @@ const TokenInstanceContent = () => {
 
   return (
     <>
+      <TextAd mb={ 6 }/>
       <PageTitle
         title={ `${ tokenInstanceQuery.data?.token.name || 'Unnamed token' } #${ tokenInstanceQuery.data?.id }` }
         backLink={ backLink }

@@ -127,7 +127,7 @@ const VerifiedContracts = () => {
 
   return (
     <Box>
-      <PageTitle title="Verified contracts"/>
+      <PageTitle title="Verified contracts" withTextAd/>
       <VerifiedContractsCounters/>
       <DataListDisplay
         isError={ isError }
