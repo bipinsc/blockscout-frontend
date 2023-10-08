@@ -32,7 +32,6 @@ import CopyToClipboard from 'ui/shared/CopyToClipboard';
 import CurrencyValue from 'ui/shared/CurrencyValue';
 import DataFetchAlert from 'ui/shared/DataFetchAlert';
 import DetailsInfoItem from 'ui/shared/DetailsInfoItem';
-import DetailsSponsoredItem from 'ui/shared/DetailsSponsoredItem';
 import AddressEntity from 'ui/shared/entities/address/AddressEntity';
 import BlockEntity from 'ui/shared/entities/block/BlockEntity';
 import HashStringShortenDynamic from 'ui/shared/HashStringShortenDynamic';
@@ -196,8 +195,6 @@ const TxDetails = () => {
             </Skeleton>
           </DetailsInfoItem>
         ) }
-        <DetailsSponsoredItem isLoading={ isPlaceholderData }/>
-
         { divider }
 
         { actionsExist && (
@@ -322,8 +319,8 @@ const TxDetails = () => {
             title="Gas fees (Gwei)"
             // eslint-disable-next-line max-len
             hint={ `
-              Base Fee refers to the network Base Fee at the time of the block, 
-              while Max Fee & Max Priority Fee refer to the max amount a user is willing to pay 
+              Base Fee refers to the network Base Fee at the time of the block,
+              while Max Fee & Max Priority Fee refer to the max amount a user is willing to pay
               for their tx & to give to the ${ getNetworkValidatorTitle() } respectively
             ` }
             isLoading={ isPlaceholderData }

@@ -32,7 +32,7 @@ test('base view +@dark-mode +@mobile', async({ mount, page }) => {
   );
 
   await expect(component).toHaveScreenshot({
-    mask: [ page.locator(configs.adsBannerSelector) ],
+    mask: [ ],
     maskColor: configs.maskColor,
   });
 });

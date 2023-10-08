@@ -68,7 +68,6 @@ export type NextPublicEnvs = {
 & NextPublicEnvsMarketplace
 & NextPublicEnvsRollup
 & NextPublicEnvsBeacon
-& NextPublicEnvsAdsBanner
 & NextPublicEnvsSentry;
 
 type NextPublicEnvsAccount =
@@ -116,19 +115,6 @@ type NextPublicEnvsBeacon =
 {
   NEXT_PUBLIC_HAS_BEACON_CHAIN?: undefined;
   NEXT_PUBLIC_BEACON_CHAIN_CURRENCY_SYMBOL?: undefined;
-}
-
-type NextPublicEnvsAdsBanner =
-{
-  NEXT_PUBLIC_AD_BANNER_PROVIDER: 'slise' | 'coinzilla' | 'none';
-} |
-{
-  NEXT_PUBLIC_AD_BANNER_PROVIDER: 'adbutler';
-  NEXT_PUBLIC_AD_ADBUTLER_CONFIG_DESKTOP: string;
-  NEXT_PUBLIC_AD_ADBUTLER_CONFIG_MOBILE: string;
-} |
-{
-  NEXT_PUBLIC_AD_BANNER_PROVIDER?: undefined;
 }
 
 type NextPublicEnvsSentry =
