@@ -1,7 +1,5 @@
 export { default as account } from './account';
 export { default as addressVerification } from './addressVerification';
-export { default as adsBanner } from './adsBanner';
-export { default as adsText } from './adsText';
 export { default as beaconChain } from './beaconChain';
 export { default as blockchainInteraction } from './blockchainInteraction';
 export { default as csvExport } from './csvExport';

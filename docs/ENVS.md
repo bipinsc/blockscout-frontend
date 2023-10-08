@@ -21,8 +21,6 @@ The app instance could be customized by passing following variables to NodeJS en
   - [My account](ENVS.md#my-account)
   - [Address verification](ENVS.md#address-verification-in-my-account) in "My account"
   - [Blockchain interaction](ENVS.md#blockchain-interaction-writing-to-contract-etc) (writing to contract, etc.)
-  - [Banner ads](ENVS.md#banner-ads)
-  - [Text ads](ENVS.md#text-ads)
   - [Beacon chain](ENVS.md#beacon-chain)
   - [Rollup (L2) chain](ENVS.md#rollup-l2-chain)
   - [Export data to CSV file](ENVS.md#export-data-to-csv-file)
@@ -407,7 +405,7 @@ This feature is **enabled by default** with the `['metamask']` value. To switch 
 
 ### Safe{Core} address tags
 
-For the smart contract addresses which are [Safe{Core} accounts](https://safe.global/) public tag "Multisig: Safe" will be displayed in the address page header along side to Safe logo. The Safe service is available only for certain networks, see full list [here](https://docs.safe.global/safe-core-api/available-services). Based on provided value of `NEXT_PUBLIC_NETWORK_ID`, the feature will be enabled or disabled. 
+For the smart contract addresses which are [Safe{Core} accounts](https://safe.global/) public tag "Multisig: Safe" will be displayed in the address page header along side to Safe logo. The Safe service is available only for certain networks, see full list [here](https://docs.safe.global/safe-core-api/available-services). Based on provided value of `NEXT_PUBLIC_NETWORK_ID`, the feature will be enabled or disabled.
 
 &nbsp;
 
